@@ -1,4 +1,5 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node";
+import { createThemeSessionResolver } from "remix-themes";
 import invariant from "tiny-invariant";
 
 import type { User } from "~/models/user.server";
@@ -95,3 +96,17 @@ export async function logout(request: Request) {
     },
   });
 }
+
+const cStorage = createCookieSessionStorage(
+  {
+    cookie: {
+      name: "__remix-themes",
+      path: '/', //cookie here will work in all routes 
+      httpOnly: true,
+      sameSite: 'lax',
+      secrets: ['secret'],
+      secure: process.env.NODE_ENV === "production"
+    },
+  });
+
+export const darkSessionResolver = createThemeSessionResolver(cStorage)
