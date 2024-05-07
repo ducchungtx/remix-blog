@@ -1,6 +1,7 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
+// import { Analytics } from "@vercel/analytics/react";
 import {
   Links,
   LiveReload,
@@ -20,7 +21,7 @@ import {
 import { getUser, darkSessionResolver } from "~/session.server";
 import stylesheet from "~/tailwind.css";
 
-import TemNavbar from "./routes/components/Template/TemNavbar";
+import TemNavbar from "./components/Template/TemNavbar";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -56,7 +57,8 @@ function App() {
         <PreventFlashOnWrongTheme ssrTheme={Boolean(theme)} />
         <Links />
       </head>
-      <body className="bg-white text-black dark:bg-black  dark:text-white">
+      <body className="bg-white text-black dark:bg-black dark:text-white">
+        {/* <Analytics /> */}
         <Layout>
           <Outlet />
           <ScrollRestoration />

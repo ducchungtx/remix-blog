@@ -1,6 +1,8 @@
 import { Disclosure } from "@headlessui/react";
-import { Link } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import { motion } from "framer-motion";
+
+import { useOptionalUser } from "~/utils";
 
 import DarkThemeButton from "./DarkThemeButton";
 import { GitHubButton, MenuButtonIcon, NavbarMenuItem } from "./NavbarPartials";
@@ -11,6 +13,7 @@ const imageVariants = {
 };
 
 export default function TemNavbar() {
+  const user = useOptionalUser();
   return (
     <>
       <Disclosure as="header">
@@ -44,6 +47,29 @@ export default function TemNavbar() {
                     >
                       Contact Me
                     </a>
+                    {user ? (
+                      <Form action="/logout" method="post">
+                        <button
+                          type="submit"
+                          className="text-black font-semibold dark:text-white">
+                          Logout
+                        </button>
+                      </Form>
+
+                    ) : (
+                      <>
+                        <Link
+                          to="/login"
+                          className="text-black font-semibold dark:text-white">
+                          Login
+                        </Link>
+                        <Link
+                          to="/join"
+                          className="text-black font-semibold dark:text-white">
+                          Register
+                        </Link>
+                      </>
+                    )}
                   </nav>
 
                   {/*switch between dark and light mode*/}
@@ -95,6 +121,17 @@ export default function TemNavbar() {
                 <NavbarMenuItem to="/contactme" activeExtraClass="font-semibold text-black bg-zinc-500 ">
                   Contact Me
                 </NavbarMenuItem>
+                {user ?
+                  <Form action="/logout" method="post">
+                    <button type="submit" className="font-semibold text-black bg-zinc-500">Logout</button>
+                  </Form>
+                  : (
+                    <>
+                      <NavbarMenuItem to="/login" activeExtraClass="font-semibold text-black bg-zinc-500">Login</NavbarMenuItem>
+                      <NavbarMenuItem to="/join" activeExtraClass="font-semibold text-black bg-zinc-500">Register</NavbarMenuItem>
+                    </>
+                  )
+                }
               </div>
             </Disclosure.Panel>
           </>
