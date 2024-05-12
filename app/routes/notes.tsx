@@ -49,7 +49,7 @@ export default function NotesPage() {
                 <li key={note.id}>
                   <NavLink
                     className={({ isActive }) =>
-                      `block border-b p-4 text-xl ${isActive ? "text-black bg-white dark:bg-black dark:text-white" : ""}`
+                      `block border-b p-4 text-xl dark:text-white ${isActive ? "text-black bg-white dark:bg-black" : ""}`
                     }
                     to={note.id}
                   >

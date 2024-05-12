@@ -1,6 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
+import blogSvgItem from '~/assets/images/blog-svg-item.svg';
+import postImage from '~/assets/images/posts/blog_img_13.jpg';
 import { useOptionalUser } from "~/utils";
 
 export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
@@ -8,134 +10,56 @@ export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
 export default function Index() {
   const user = useOptionalUser();
   return (
-    <main className="relative min-h-screen bg-white sm:flex sm:items-center sm:justify-center">
-      <div className="relative sm:pb-16 sm:pt-8">
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">
-            <div className="absolute inset-0">
-              <img
-                className="h-full w-full object-cover"
-                src="https://user-images.githubusercontent.com/1500684/157774694-99820c51-8165-4908-a031-34fc371ac0d6.jpg"
-                alt="Sonic Youth On Stage"
-              />
-              <div className="absolute inset-0 bg-[color:rgba(254,204,27,0.5)] mix-blend-multiply" />
-            </div>
-            <div className="relative px-4 pb-8 pt-16 sm:px-6 sm:pb-14 sm:pt-24 lg:px-8 lg:pb-20 lg:pt-32">
-              <h1 className="text-center text-6xl font-extrabold tracking-tight sm:text-8xl lg:text-9xl">
-                <span className="block uppercase text-yellow-500 drop-shadow-md">
-                  Indie Stack
-                </span>
-              </h1>
-              <p className="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">
-                Check the README.md file for instructions on how to get this
-                project deployed.
-              </p>
-              <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
-                {user ? (
-                  <Link
-                    to="/notes"
-                    className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-yellow-700 shadow-sm hover:bg-yellow-50 sm:px-8"
-                  >
-                    View Notes for {user.email}
-                  </Link>
-                ) : (
-                  <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
-                    <Link
-                      to="/join"
-                      className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-yellow-700 shadow-sm hover:bg-yellow-50 sm:px-8"
-                    >
-                      Sign up
-                    </Link>
-                    <Link
-                      to="/login"
-                      className="flex items-center justify-center rounded-md bg-yellow-500 px-4 py-3 font-medium text-white hover:bg-yellow-600"
-                    >
-                      Log In
-                    </Link>
-                  </div>
-                )}
-              </div>
-              <a href="https://remix.run">
-                <img
-                  src="https://user-images.githubusercontent.com/1500684/158298926-e45dafff-3544-4b69-96d6-d3bcc33fc76a.svg"
-                  alt="Remix"
-                  className="mx-auto mt-16 w-full max-w-[12rem] md:max-w-[16rem]"
-                />
-              </a>
+    <div>
+      <div className="container">
+        <div className="flex flex-wrap mx-[-12px]">
+          <div className="xl:w-7/12 lg:w-7/12 w-full flex-[0_0_auto] px-[12px] max-w-full wow fadeInLeft" style={{ visibility: "visible", animationName: "fadeInLeft" }}>
+            <div className="title-style-five mb-[65px] lg:mb-5 md:mb-5 sm:mb-5 xsm:mb-5">
+              <div className="sc-title-two italic relative text-[17px] text-pink-400 mb-5 pl-10 before:content-[''] before:absolute before:w-6 before:h-px before:left-0 before:top-3.5 before:bg-pink-500]">Blog</div>
+              <h2 className="main-title font-medium text-black dark:text-white text-[72px] leading-[1.25em] 2xl:text-[58px] lg:text-[50px] md:text-[35px] sm:text-[35px] xsm:text-[35px]">Check our inside news &amp; update.</h2>
             </div>
           </div>
         </div>
-
-        <div className="mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-8">
-          <div className="mt-6 flex flex-wrap justify-center gap-8">
-            {[
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157764397-ccd8ea10-b8aa-4772-a99b-35de937319e1.svg",
-                alt: "Fly.io",
-                href: "https://fly.io",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157764395-137ec949-382c-43bd-a3c0-0cb8cb22e22d.svg",
-                alt: "SQLite",
-                href: "https://sqlite.org",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157764484-ad64a21a-d7fb-47e3-8669-ec046da20c1f.svg",
-                alt: "Prisma",
-                href: "https://prisma.io",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157764276-a516a239-e377-4a20-b44a-0ac7b65c8c14.svg",
-                alt: "Tailwind",
-                href: "https://tailwindcss.com",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157764454-48ac8c71-a2a9-4b5e-b19c-edef8b8953d6.svg",
-                alt: "Cypress",
-                href: "https://www.cypress.io",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157772386-75444196-0604-4340-af28-53b236faa182.svg",
-                alt: "MSW",
-                href: "https://mswjs.io",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157772447-00fccdce-9d12-46a3-8bb4-fac612cdc949.svg",
-                alt: "Vitest",
-                href: "https://vitest.dev",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157772662-92b0dd3a-453f-4d18-b8be-9fa6efde52cf.png",
-                alt: "Testing Library",
-                href: "https://testing-library.com",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157772934-ce0a943d-e9d0-40f8-97f3-f464c0811643.svg",
-                alt: "Prettier",
-                href: "https://prettier.io",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157772990-3968ff7c-b551-4c55-a25c-046a32709a8e.svg",
-                alt: "ESLint",
-                href: "https://eslint.org",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157773063-20a0ed64-b9f8-4e0b-9d1e-0b65a3d4a6db.svg",
-                alt: "TypeScript",
-                href: "https://typescriptlang.org",
-              },
-            ].map((img) => (
-              <a
-                key={img.href}
-                href={img.href}
-                className="flex h-16 w-32 justify-center p-1 grayscale transition hover:grayscale-0 focus:grayscale-0"
-              >
-                <img alt={img.alt} src={img.src} className="object-contain" />
-              </a>
-            ))}
+        <img src={blogSvgItem} alt="blog-svg-item" className="lazy-img shapes shape-two absolute z-[-1] right-[17%] 2xl:right-[8%] lg:right-[6%] md:!hidden sm:!hidden xsm:!hidden top-[4%]" />
+      </div>
+      {/* Blog section */}
+      <div className="blog-section-five mt-[70px]  lg:mt-[30px] md:mt-[30px] sm:mt-[30px] xsm:mt-[30px]">
+        <div className="container">
+          <div className=" border-b-[#f1f1f1] border-b border-solid pb-[130px]  lg:pb-[60px] md:pb-[60px] sm:pb-[60px] xsm:pb-[60px]">
+            <div className="flex flex-wrap xl:mx-[-24px]">
+              {/* Start Blog Posts */}
+              <div className="xl:w-8/12 lg:w-8/12 w-full flex-[0_0_auto] px-[12px] max-w-full">
+                {/* Start article */}
+                <div className="blog-meta-wrapper xxl:!pr-[3rem] ">
+                  <article className="blog-meta-three mb-20  lg:mb-10 md:mb-10 sm:mb-10 xsm:mb-10 wow fadeInUp">
+                    <figure className="post-img !m-0 overflow-hidden rounded-[10px]"><a href="blog-details.html" className="w-full block"><img src={postImage} alt="" className="lazy-img w-full tran4s" /></a></figure>
+                    <div className="post-data mt-10  lg:mt-[30px] md:mt-[30px] sm:mt-[30px] xsm:mt-[30px]">
+                      <div className="post-date opacity-75 uppercase text-[14px] tracking-[1px] lg:text-[12px] md:text-[12px] sm:text-[12px] xsm:text-[12px] ">23 Apr, 2023</div>
+                      <a href="blog-details.html" className="mt-[10px] mb-[25px]  xl:mb-5 lg:mb-5 md:mb-5 sm:mb-5 xsm:mb-5"><h4 className="tran3s blog-title xl  text-black  leading-[1.53em] text-[32px] lg:text-[24px] md:text-[24px] sm:text-[24px] xsm:text-[24px]  hover:text-[color:var(--prime-five)]">Print, publishing qui visual ux quis layout mockups.</h4></a>
+                      <div><a href="blog-details.html" className="read-btn-two font-medium tran3s  leading-[45px] border border-pink-500 text-pink-500 p-[0_32px] rounded-[23px] border-solid hover:text-white hover:bg-pink-800 sm:leading-[43px] sm:text-[15px] sm:p-[0_28px] xsm:leading-[43px] xsm:text-[15px] xsm:p-[0_28px]">Read More</a></div>
+                    </div>
+                  </article>
+                  {/* End article */}
+                </div>
+              </div>
+              {/* End Blog Posts */}
+              {/* Start Blog Sidebar */}
+              <div className="xl:w-4/12 lg:w-4/12 md:w-8/12 w-full flex-[0_0_auto] px-[12px] max-w-full">
+                <div className="blog-sidebar md:mt-[70px] sm:mt-[70px] xsm:mt-[70px]">
+                  {/* Search bar */}
+                  <div className="blog-sidebar-search mb-[55px] md:mb-10 sm:mb-10 xsm:mb-10 ">
+                    <form action="#" className=" h-[65px] relative">
+                      <input className=" w-full h-full text-[17px] pl-5 pr-[60px] py-0 rounded-[5px] border-0  bg-[#F4F4F4]" type="text" placeholder="Search.." />
+                      <button className=" absolute w-[60px] text-black right-0 inset-y-0"><i className="bi bi-search"></i></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              {/* End Blog Sidebar */}
+            </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
