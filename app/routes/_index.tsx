@@ -1,14 +1,14 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+// import { Link } from "@remix-run/react";
 
 import blogSvgItem from '~/assets/images/blog-svg-item.svg';
 import postImage from '~/assets/images/posts/blog_img_13.jpg';
-import { useOptionalUser } from "~/utils";
+// import { useOptionalUser } from "~/utils";
 
 export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
 
 export default function Index() {
-  const user = useOptionalUser();
+  // const user = useOptionalUser();
   return (
     <div>
       <div className="container">
