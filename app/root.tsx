@@ -10,18 +10,32 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useLocation,
 } from "@remix-run/react";
-import { ReactNode } from "react";
+import { type IStaticMethods } from "preline/preline";
+import { ReactNode, useEffect } from "react";
 import {
   PreventFlashOnWrongTheme,
   ThemeProvider,
   useTheme,
 } from "remix-themes";
 
+declare global {
+  interface Window {
+    HSStaticMethods: IStaticMethods;
+  }
+}
+if (typeof window !== "undefined") {
+  require("preline/preline");
+}
+
+
 import { getUser, darkSessionResolver } from "~/session.server";
 import stylesheet from "~/tailwind.css";
 
-import TemNavbar from "./components/Template/TemNavbar";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+// import TemNavbar from "./components/Template/TemNavbar";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -44,8 +58,13 @@ export default function AppWithProvider() {
 }
 
 function App() {
+  const location = useLocation();
   const { theme } = useLoaderData<typeof loader>();
   const [dTheme] = useTheme();
+
+  useEffect(() => {
+    window.HSStaticMethods.autoInit();
+  }, [location.pathname]);
 
   return (
     <html lang="en" data-theme={dTheme ?? ""}>
@@ -73,10 +92,11 @@ function App() {
 function Layout({ children }: { children: ReactNode }) {
   return (
     <div>
-      <TemNavbar />
-      <main className=" max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 mt-5">
+      <Header />
+      <main className=" mx-auto px-4 sm:px-6 lg:px-4 mt-5">
         {children}
       </main>
+      <Footer />
     </div>
   );
 }

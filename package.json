@@ -26,18 +26,23 @@
   ],
   "dependencies": {
     "@headlessui/react": "^1.7.19",
+    "@preline/collapse": "^2.1.0",
     "@prisma/client": "^4.16.2",
     "@remix-run/css-bundle": "^2.9.1",
     "@remix-run/node": "^2.9.1",
     "@remix-run/react": "^2.9.1",
     "@remix-run/serve": "^2.9.1",
+    "add": "^2.0.6",
     "bcryptjs": "^2.4.3",
     "framer-motion": "^11.1.8",
     "isbot": "^4.4.0",
+    "preline": "^2.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remix-themes": "^1.3.1",
-    "tiny-invariant": "^1.3.3"
+    "tiny-invariant": "^1.3.3",
+    "use-typewriter-hook": "^3.1.2",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
