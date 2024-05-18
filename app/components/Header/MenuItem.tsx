@@ -12,10 +12,17 @@ const imageVariants = {
 export const NavbarMenuItem = ({
   children,
   to,
+  disabled,
 }: {
   children: ReactNode;
   to: string;
+  disabled?: boolean;
 }) => {
+  if (disabled) return (
+    <div className="text-black dark:text-white dark:hover:text-neutral-300 cursor-not-allowed">
+      {children}
+    </div>
+  );
   return (
     <NavLink
       className={({ isActive }) =>

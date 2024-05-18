@@ -5,15 +5,13 @@ function Hero() {
   const { textValue: typedText, wrapperClassName } = useTypewriter({
     targetText: targetText,
     typingDelayMillis: 150,
-    loop: true,
-    loopDelay: 1500,
   });
   return (
     <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
       {/* Grid */}
       <div className="grid lg:grid-cols-7 lg:gap-x-8 xl:gap-x-12 lg:items-center">
         <div className="lg:col-span-3">
-          <h1 className={`block text-3xl font-bold text-gray-800 sm:text-3xl md:text-4xl lg:text-5xl dark:text-white ${wrapperClassName}`}>{typedText}</h1>
+          <h1 className={`block text-3xl font-bold sm:text-3xl md:text-4xl lg:text-5xl gradient-text ${wrapperClassName}`}>{typedText}</h1>
           <div className="bio-description md:text-lg leading-10 text-textSmColor">
             <div className="my-10 text-lg xl:text-xl font-light">
               <p className="my-4">Welcome to my personal website!</p>

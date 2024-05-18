@@ -1,10 +1,13 @@
-import { Link } from '@remix-run/react';
+import { Form, Link } from '@remix-run/react';
+
+import { useOptionalUser } from '~/utils';
 
 import DarkThemeButton from '../Template/DarkThemeButton';
 
 import { NavbarMenuItem } from './MenuItem';
 
 function Header() {
+  const user = useOptionalUser();
   return (
     <div>
       {/* ========== HEADER ========== */}
@@ -18,9 +21,25 @@ function Header() {
           {/* Button Group */}
           <div className="flex items-center gap-x-2 ms-auto py-1 md:ps-6 md:order-3 md:col-span-3">
             <DarkThemeButton />
-            <Link to="/login" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-gray-200 text-black hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white">
-              Sign in
-            </Link>
+
+            {user ? (
+              <Form action="/logout" method="post">
+                <button
+                  type="submit"
+                  className="text-black dark:text-white py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                  </svg>
+                  Logout
+                </button>
+              </Form>
+            ) : (
+              <Link to="/login" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-gray-200 text-black hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white">
+                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx={12} cy={7} r={4} /></svg>
+                Sign in
+              </Link>
+            )}
+
             <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-transparent bg-lime-400 text-black hover:bg-lime-500 transition disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-lime-500">
               Hire me
             </button>
@@ -46,12 +65,12 @@ function Header() {
                 </NavbarMenuItem>
               </div>
               <div>
-                <NavbarMenuItem to='/portfolio'>
+                <NavbarMenuItem to='/portfolio' disabled>
                   Portfolio
                 </NavbarMenuItem>
               </div>
               <div>
-                <NavbarMenuItem to='/resume'>
+                <NavbarMenuItem to='/resume' disabled>
                   Resume
                 </NavbarMenuItem>
               </div>
