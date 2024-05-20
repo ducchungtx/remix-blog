@@ -25,14 +25,12 @@
     "/public/build"
   ],
   "dependencies": {
-    "@headlessui/react": "^1.7.19",
     "@preline/collapse": "^2.1.0",
     "@prisma/client": "^4.16.2",
     "@remix-run/css-bundle": "^2.9.1",
     "@remix-run/node": "^2.9.1",
     "@remix-run/react": "^2.9.1",
     "@remix-run/serve": "^2.9.1",
-    "add": "^2.0.6",
     "bcryptjs": "^2.4.3",
     "framer-motion": "^11.1.8",
     "isbot": "^4.4.0",
