@@ -1,10 +1,11 @@
+import BlogComponent from "~/components/Blog/Blog";
 
 function Blog() {
   return (
     <div>
-      Blog content
+      <BlogComponent />
     </div>
-  )
+  );
 }
 
-export default Blog
+export default Blog;
