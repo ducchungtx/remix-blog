@@ -1,20 +1,11 @@
+import { Link } from "@remix-run/react";
 import React from "react";
 
-function Blog() {
+function BlogHome() {
   return (
     <div>
       {/* Card Blog */}
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        {/* Title */}
-        <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-          <h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">
-            The Blog
-          </h2>
-          <p className="mt-1 text-gray-600 dark:text-neutral-400">
-            A place to share knowledge and life experiences.
-          </p>
-        </div>
-        {/* End Title */}
         {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Card */}
@@ -125,9 +116,9 @@ function Blog() {
         {/* End Grid */}
         {/* Card */}
         <div className="mt-12 text-center">
-          <a
+          <Link
             className="py-3 px-4 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-gray-200 bg-white text-blue-600 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-blue-500 dark:hover:bg-neutral-800"
-            href="#"
+            to="/blog"
           >
             Read more
             <svg
@@ -144,7 +135,7 @@ function Blog() {
             >
               <path d="m9 18 6-6-6-6" />
             </svg>
-          </a>
+          </Link>
         </div>
         {/* End Card */}
       </div>
@@ -153,4 +144,4 @@ function Blog() {
   );
 }
 
-export default Blog;
+export default BlogHome;

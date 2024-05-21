@@ -29,7 +29,6 @@ if (typeof window !== "undefined") {
   require("preline/preline");
 }
 
-
 import { getUser, darkSessionResolver } from "~/session.server";
 import stylesheet from "~/tailwind.css";
 
@@ -93,9 +92,7 @@ function Layout({ children }: { children: ReactNode }) {
   return (
     <div>
       <Header />
-      <main className=" mx-auto px-4 sm:px-6 lg:px-4 mt-5">
-        {children}
-      </main>
+      <main className=" mx-auto px-4 sm:px-6 lg:px-4 mt-5">{children}</main>
       <Footer />
     </div>
   );

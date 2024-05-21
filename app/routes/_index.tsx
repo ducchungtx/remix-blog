@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 
 import Hero from "~/components/Profile/Hero";
+import BlogHome from "~/components/Blog/BlogHome";
 // import { Link } from "@remix-run/react";
 
 // import { useOptionalUser } from "~/utils";
@@ -13,6 +14,7 @@ export default function Index() {
     <div>
       {/* Hero */}
       <Hero />
+      <BlogHome />
     </div>
   );
 }
