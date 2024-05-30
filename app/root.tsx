@@ -13,7 +13,7 @@ import {
   useLocation,
 } from "@remix-run/react";
 import { type IStaticMethods } from "preline/preline";
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import {
   PreventFlashOnWrongTheme,
   ThemeProvider,
@@ -31,10 +31,6 @@ if (typeof window !== "undefined") {
 
 import { getUser, darkSessionResolver } from "~/session.server";
 import stylesheet from "~/tailwind.css";
-
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-// import TemNavbar from "./components/Template/TemNavbar";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -76,24 +72,12 @@ function App() {
         <Links />
       </head>
       <body className="bg-white text-black dark:bg-black dark:text-white">
-        {/* <Analytics /> */}
-        <Layout>
-          <Outlet />
-          <ScrollRestoration />
-          <Scripts />
-          <LiveReload />
-        </Layout>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
       </body>
     </html>
   );
 }
 
-function Layout({ children }: { children: ReactNode }) {
-  return (
-    <div>
-      <Header />
-      <main className=" mx-auto px-4 sm:px-6 lg:px-4 mt-5">{children}</main>
-      <Footer />
-    </div>
-  );
-}
