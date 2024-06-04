@@ -71,7 +71,10 @@ function App() {
         <PreventFlashOnWrongTheme ssrTheme={Boolean(theme)} />
         <Links />
       </head>
-      <body className="bg-white text-black dark:bg-black dark:text-white">
+      <body
+        className="bg-white text-black dark:bg-black dark:text-white"
+        suppressHydrationWarning={true}
+      >
         <Outlet />
         <ScrollRestoration />
         <Scripts />
@@ -80,4 +83,3 @@ function App() {
     </html>
   );
 }
-
